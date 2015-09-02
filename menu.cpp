@@ -16,7 +16,7 @@ int menu(){
 	cout << "6. Delete Tree" << endl;
 	cout << "7. Check Balance" << endl;
 	cout << "8. Exit" << endl;
-	cout << "Choose the option to be performed: " << endl;
+	cout << "Choose the option to be performed: " ;
 	cin >> choice;
 	return choice;
 }
