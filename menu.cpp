@@ -1,11 +1,13 @@
 #include "menu.h"
 #include <iostream>
 
+using namespace std;
+
 int menu(){
 
 	int choice;
 
-	cout << "Menu options:"
+	cout << "Menu options:" << endl;
 	cout << "1. Create Tree" << endl;
 	cout << "2. Insertion" << endl;
 	cout << "3. Deletion" << endl;
