@@ -1,4 +1,5 @@
 #include <cstddef>
+#include <iostream>
 
 class node{
 	int data;
@@ -9,15 +10,29 @@ class node{
 public: 
 	node();
 	node(int);
-	deleteTree();
+	void deleteTree();
+	void nodeInsert(node*);
+	void setData(int);
+	int getData();
+	void printTree();
+	//void createTree();
+
 };
 
-node::node(){
-	data =  -1;
-	height = -1;
-	left = NULL;
-	right = NULL;
-	parent = NULL;
+//node::node(){
+//	//data =  -1;
+//	height = -1;
+//	left = NULL;
+//	right = NULL;
+//	parent = NULL;
+//}
+
+void node::setData(int value){
+	data = value;
+}
+
+int node::getData(){
+	return data;
 }
 
 node::node(int value){
@@ -28,7 +43,83 @@ node::node(int value){
 	parent = NULL;
 }
 
-void deleteTree(){
-	if(this.left == NULL && this.right == NULL)
+void node::deleteTree(){
 
+
+	if(this->left == NULL && this->right == NULL){
+		
+		return;
+	}
+	else if(this->left != NULL){
+		this->left->deleteTree();
+		delete this->left;
+		this->left = NULL;
+	}
+	else{
+		this->right->deleteTree();
+		delete this->right;
+		this->right = NULL;
+
+	}
+}
+
+void node::nodeInsert(node* newNode){
+	//if no tree exists
+	//if(this == NULL){
+	//	this = newNode;
+	//	newNode->height = 0;
+	//}
+
+	if(this->data >= newNode->data){
+		if(this->left == NULL){
+			this->left = newNode;
+			newNode->height = (this->height+1);
+			return;
+
+		}else{
+			this->left->nodeInsert(newNode);
+			return;
+		}
+	}else{
+		if(this->right == NULL){
+			this->right = newNode;
+			newNode->height = (this->height+1);
+
+			//std::cout<<this->right->data;
+			//std::cout<<newNode->data;
+
+			return;
+
+		}else{
+			this->right->nodeInsert(newNode);
+			return;
+		}
+	}
+}
+
+void node::printTree(){
+	if(this->left == NULL && this->right == NULL){
+		for( int i =0; i <= this->height; i++){
+			std::cout << "   ";
+		}
+		std::cout << data << std::endl;
+		return;
+	}
+
+	if(this->left != NULL){
+		this->left->printTree();
+		
+	}
+
+	for( int i =0; i <= this->height; i++){
+			std::cout << "   ";
+		}
+	std::cout << data << std::endl;
+
+	if(this->right != NULL){
+		this->right->printTree();
+		
+	}
+
+	return;
 }

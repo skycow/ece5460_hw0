@@ -3,6 +3,7 @@
 #include "menu.h"
 #include "node.cpp"
 #include <cstddef>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -23,8 +24,9 @@ int main(){
 			case 1:{
 				//check if tree exists
 				if(root != NULL){
-					root.deleteTree();
-				}else{
+					root->deleteTree();
+					root = NULL;
+				}
 
 					cout << "Enter name of file to create tree from: ";
 					string filename;
@@ -33,15 +35,45 @@ int main(){
 					ifstream inputFile (filename.c_str());
 					if(inputFile.is_open() && inputFile.good()){
 						cout << "Creating tree..." << endl;
+						
+
+
 						while( getline(inputFile, num) ){
-							cout << num << endl;
+
+							int conv = atoi ( num.c_str() );
+
+							node* temp;
+							temp = new node(conv); 
+//
+							//temp->setData(conv);
+
+							if(root == NULL){
+								root = temp;
+								//cout << "root";
+							}else{
+								root->nodeInsert(temp);
+								//cout<<"test";
+							}
+							//cout << temp->getData();
+//							delete temp;
+
 						}
+						root->printTree();
+					
+
+
+
+
+
+
+
+
 						cout << "Tree created!" << endl << endl;
 					}else{
 						cout << "Error opening file." << endl; 
 					}
 					inputFile.close();
-				}
+				
 				break;
 			}
 			case 2:
