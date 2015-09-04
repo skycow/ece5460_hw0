@@ -18,6 +18,7 @@ public:
 	void printTree();
 	void setBalance(int);
 	//void createTree();
+	void rotate();
 
 };
 
@@ -141,30 +142,74 @@ int node::balanceTree(){
 
 	if(this->left == NULL && this->right == NULL){
 		this->balance = 0;
+		this->height = 1;
 		return 1;
 	}
 
+	//counts left subtree
 	if(this->left != NULL){
 		left = this->left->balanceTree();
 	}else{
 		left = 0;
 	}
 
+	//counts right subtree
 	if(this->right != NULL){
 		right = this->right->balanceTree();
 	}else{
 		right = 0;
 	}
 
+	//calculates balance
 	this->balance = (left - right);
 
 	if(this->balance < -1 || this->balance >= 1){
-		//need rotation
+		this->rotate();
 	}else{
 		if(left >= right){
-			return left;
+			this.height = (left + 1);
+			return (left+1);
 		}else{
-			return right;
+			this.height = (right + 1);
+			return (right+1);
 		}
 	}
+}
+
+void node::rotate() {
+	if (this->balance == 2) {
+		if (this->left->balance == 1) {
+			//rotate right once
+		}
+		else if(this->left->balance == -1) {
+			//rotate left then right
+		}
+		else {
+			cout << "We have a problem";
+		}
+	}
+	else if (this->balance == -2) {
+		if (this->right->balance == -1) {
+			//rotate left once
+		}
+		else if (this->right->balance == 1) {
+			//rotate right then left
+		}
+		else {
+			cout << "We have a negative problem";
+		}
+	}
+	else {
+		cout << "We have a big problem";
+	}
+		
+	
+	
+	
+	//case 3
+	
+	
+	//case 4
+
+
 }
