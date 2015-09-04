@@ -49,6 +49,7 @@ int main(){
 
 							if(root == NULL){
 								root = temp;
+								root->setBalance(0);
 								//cout << "root";
 							}else{
 								root->nodeInsert(temp);
@@ -59,14 +60,6 @@ int main(){
 
 						}
 						root->printTree();
-					
-
-
-
-
-
-
-
 
 						cout << "Tree created!" << endl << endl;
 					}else{
@@ -76,11 +69,40 @@ int main(){
 				
 				break;
 			}
+			//Insertion
 			case 2:
+				cout << "Please enter value to insert:";
+				int userInsert;
+				cin >> userInsert;
+				node* temp;
+				temp = new node(userInsert); 
+				if(root == NULL){
+					root = temp;
+					root->setBalance(0);
+
+				}else{
+					root->nodeInsert(temp);
+				}
+				root->printTree();
 				break;
+			//Deletion	
 			case 3:
 				break;
+			//Search
 			case 4:
+				cout << "Please enter value to insert:";
+				int userSearch;
+				cin >> userSearch;
+				break;
+			case 6: 
+				if(root != NULL){
+					cout << "Deleting tree." << endl;
+					root->deleteTree();
+					root = NULL;
+					cout << "Tree deleted." << endl;
+				}else{
+					cout << "No tree to delete." << endl;
+				}
 				break;
 			case 8:
 				done = true;

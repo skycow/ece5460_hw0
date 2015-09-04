@@ -4,6 +4,7 @@
 class node{
 	int data;
 	int height;
+	int balance;
 	node* left;
 	node* right;
 	node* parent;
@@ -15,6 +16,7 @@ public:
 	void setData(int);
 	int getData();
 	void printTree();
+	void setBalance(int);
 	//void createTree();
 
 };
@@ -29,6 +31,10 @@ public:
 
 void node::setData(int value){
 	data = value;
+}
+
+void node::setBalance(int value){
+	balance = value;
 }
 
 int node::getData(){
@@ -74,6 +80,9 @@ void node::nodeInsert(node* newNode){
 		if(this->left == NULL){
 			this->left = newNode;
 			newNode->height = (this->height+1);
+			//if(this->right == NULL){
+			//	this->balance = 
+			//}
 			return;
 
 		}else{
