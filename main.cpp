@@ -104,6 +104,9 @@ int main(){
 					cout << "No tree to delete." << endl;
 				}
 				break;
+			case 7:
+				balanceTree
+				break;
 			case 8:
 				done = true;
 				break;

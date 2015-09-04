@@ -132,3 +132,37 @@ void node::printTree(){
 
 	return;
 }
+
+int node::balanceTree(){
+
+	int right, left;
+
+	if(this->left == NULL && this->right == NULL){
+		this->balance = 0;
+		return 1;
+	}
+
+	if(this->left != NULL){
+		left = this->left->balanceTree();
+	}else{
+		left = 0;
+	}
+
+	if(this->right != NULL){
+		right = this->right->balanceTree();
+	}else{
+		right = 0;
+	}
+
+	this->balance = (left - right);
+
+	if(this->balance < -1 || this->balance >= 1){
+		//need rotation
+	}else{
+		if(left >= right){
+			return left;
+		}else{
+			return right;
+		}
+	}
+}
