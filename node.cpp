@@ -79,6 +79,7 @@ void node::nodeInsert(node* newNode){
 	if(this->data >= newNode->data){
 		if(this->left == NULL){
 			this->left = newNode;
+			newNode->parent = this;
 			newNode->height = (this->height+1);
 			//if(this->right == NULL){
 			//	this->balance = 
@@ -92,6 +93,7 @@ void node::nodeInsert(node* newNode){
 	}else{
 		if(this->right == NULL){
 			this->right = newNode;
+			newNode->parent = this;
 			newNode->height = (this->height+1);
 
 			//std::cout<<this->right->data;
