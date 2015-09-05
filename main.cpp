@@ -110,6 +110,7 @@ int main(){
 				char order;
 				cin >> order;
 				root->traversal(order);
+				break;
 			case 6: 
 				if(root != NULL){
 					cout << "Deleting tree." << endl;

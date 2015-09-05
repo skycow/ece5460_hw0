@@ -373,27 +373,28 @@ void node::search(int input, int count){
 }
 
 void node::traversal(char order){
-	if(order = 'a'){
-		std::cout << this->data << endl;
+	if(order == 'a'){
+		std::cout << this->data << std::endl;
 	}
 
-	if(this->left == NULL && this->right == NULL){
-		return;
-	}
+//	if(this->left == NULL && this->right == NULL){
+//		return;
+//	}
 
 	if(this->left !=NULL){
 		this->left->traversal(order);
 	}
 
-	if(order = 'b'){
-		std::cout << this->data << endl;	
+	if(order == 'b'){
+		std::cout << this->data << std::endl;	
 	}
 
 	if(this->right !=NULL){
 		this->right->traversal(order);
 	}
 
-	if(order = 'c'){
-		std::cout << this->data << endl;	
-	}	
+	if(order == 'c'){
+		std::cout << this->data << std::endl;	
+	}
+	return;	
 }
