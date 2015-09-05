@@ -256,7 +256,6 @@ void node::rotate() {
 			node2->left = node2->right;
 			node2->right = node1->right;
 			node1->right = node2;
-			int swap;
 			swap = node1->data;
 			node1->data = node2->data;
 			node2->data = swap;	
@@ -324,7 +323,6 @@ void node::rotate() {
 			node4->left = node3->left;
 			node3->left = node4;
 			
-			int swap;
 			swap = node3->data;
 			node3->data = node4->data;
 			node4->data = swap;

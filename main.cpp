@@ -57,6 +57,9 @@ int main(){
 							}
 							//cout << temp->getData();
 //							delete temp;
+//
+							//cout<<"calling balance"<<endl;
+							root->balanceTree();
 
 						}
 						root->printTree(0);
