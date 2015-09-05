@@ -20,6 +20,7 @@ public:
 	//void createTree();
 	void rotate();
 	int balanceTree();
+	void search(int);
 
 };
 
@@ -334,4 +335,37 @@ void node::rotate() {
 	else {
 		std::cout << "We have a big problem";
 	}
+}
+
+void node::search(int input){
+	if(this->data == input){
+		std::cout << input <<" is at the root of the tree." << endl;
+		return;
+	}
+	
+	if(input < this->data){
+		this->left->search(input, 1);
+	} else if(input > this->data){
+		this->right->search(input, 1);
+	} else {
+		std::cout << "We have a problem searching";
+	}
+	
+}
+
+void node::search(int input, int count){
+	if(this->data == input){
+		std::cout << input <<" is at height " << count;
+		std::cout << " in the tree." << std::endl;
+		return;
+	}
+
+	if(input < this->data){
+		this->left->search(input, count+1);
+	} else if(input > this->data){
+		this->right->search(input, count+1);
+	} else {
+		std::cout << "We have a problem searching at the end";
+	}
+	return;
 }
