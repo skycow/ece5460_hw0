@@ -182,7 +182,7 @@ void node::rotate() {
 	if (this->balance == 2) {
 		if (this->left->balance == 1) {
 			//rotate right once
-			std::cout<<"this begins at:"<<this->data<<std::endl;
+			//std::cout<<"this begins at:"<<this->data<<std::endl;
 			node* node1;
 			node* node2;
 			node1 = new node(0);
@@ -219,7 +219,7 @@ void node::rotate() {
 //			}
 //			node1->parent = node2;
 
-			std::cout<<"this ends at:"<<this->data<<std::endl;
+			//std::cout<<"this ends at:"<<this->data<<std::endl;
 			std::cout << "Rotated right" << std::endl;	
 		}
 		else if(this->left->balance == -1) {
@@ -232,6 +232,26 @@ void node::rotate() {
 	else if (this->balance == -2) {
 		if (this->right->balance == -1) {
 			//rotate left once
+
+			node* node1;
+			node* node2;
+			node1 = new node(0);
+			node2 = new node(0);
+
+			node1 = this;
+			node2 = this->right;
+			
+			node1->right = node2->right;
+			node2->right = node2->left;
+			node2->left = node1->left;
+			node1->left = node2;
+			
+			int swap;
+			swap = node1->data;
+			node1->data = node2->data;
+			node2->data = swap;	
+
+			std::cout << "Rotated left" << std::endl;
 		}
 		else if (this->right->balance == 1) {
 			//rotate right then left
