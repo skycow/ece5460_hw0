@@ -59,7 +59,7 @@ int main(){
 //							delete temp;
 
 						}
-						root->printTree();
+						root->printTree(0);
 
 						cout << "Tree created!" << endl << endl;
 					}else{
@@ -85,11 +85,11 @@ int main(){
 					root->nodeInsert(temp);
 				}
 				cout<<"calling print"<<endl;
-				root->printTree();
+				root->printTree(0);
 				cout<<"calling balance"<<endl;
 				root->balanceTree();
 				cout<<"calling print again"<<endl;
-				root->printTree();
+				root->printTree(0);
 				break;
 			//Deletion	
 			case 3:

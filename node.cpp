@@ -15,7 +15,7 @@ public:
 	void nodeInsert(node*);
 	void setData(int);
 	int getData();
-	void printTree();
+	void printTree(int);
 	void setBalance(int);
 	//void createTree();
 	void rotate();
@@ -110,9 +110,9 @@ void node::nodeInsert(node* newNode){
 	}
 }
 
-void node::printTree(){
+void node::printTree(int count){
 	if(this->left == NULL && this->right == NULL){
-		for( int i =0; i <= this->height; i++){
+		for( int i =0; i <= count; i++){
 			std::cout << "   ";
 		}
 		std::cout << data << std::endl;
@@ -120,7 +120,7 @@ void node::printTree(){
 	}
 
 	if(this->left != NULL){
-		this->left->printTree();
+		this->left->printTree(count+1);
 		
 	}
 
@@ -130,7 +130,7 @@ void node::printTree(){
 	std::cout << data << std::endl;
 
 	if(this->right != NULL){
-		this->right->printTree();
+		this->right->printTree(count+1);
 		
 	}
 
