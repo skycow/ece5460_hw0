@@ -56,10 +56,7 @@ int main(){
 								//cout<<"test";
 							}
 							//cout << temp->getData();
-//							delete temp;
-//
-							//cout<<"calling balance"<<endl;
-							root->balanceTree();
+//							delete temp;z
 
 						}
 						root->printTree(0);
@@ -99,9 +96,10 @@ int main(){
 				break;
 			//Search
 			case 4:
-				cout << "Please enter value to insert:";
+				cout << "Please enter value to search for:";
 				int userSearch;
 				cin >> userSearch;
+				root->search(userSearch);
 				break;
 			case 6: 
 				if(root != NULL){
