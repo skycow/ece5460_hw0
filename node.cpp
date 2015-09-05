@@ -18,7 +18,7 @@ public:
 	void printTree();
 	void setBalance(int);
 	//void createTree();
-	void rotate(node&);
+	void rotate();
 	int balanceTree();
 
 };
@@ -165,7 +165,7 @@ int node::balanceTree(){
 	this->balance = (left - right);
 
 	if(this->balance < -1 || this->balance > 1){
-		this->rotate(this*);
+		this->rotate();
 		std::cout<<"after call"<<this->data<<std::endl;
 	}else{
 		if(left >= right){
@@ -178,49 +178,62 @@ int node::balanceTree(){
 	}
 }
 
-void node::rotate(node & tempthis) {
-	if (tempthis->balance == 2) {
-		if (tempthis->left->balance == 1) {
+void node::rotate() {
+	if (this->balance == 2) {
+		if (this->left->balance == 1) {
 			//rotate right once
-			std::cout<<"tempthis begins at:"<<tempthis->data<<std::endl;
+			std::cout<<"this begins at:"<<this->data<<std::endl;
 			node* node1;
 			node* node2;
 			node1 = new node(0);
 			node2 = new node(0);
 
-			node1 = tempthis;
+			node1 = this;
 			std::cout<<"node1"<<node1->data<<std::endl;
-			node2 = tempthis->left;
+			node2 = this->left;
 			std::cout<<"node2"<<node2->data<<std::endl;
-			if(node2->right == NULL){
-				node1->left = NULL;
-			}else{
-				node1->left = node2->right;
-			}
-			node2->right = node1;
-			if(node1->parent == NULL){
-				tempthis = node2;
-				node2->parent = NULL;
-			} else {
-				node2->parent = node1->parent;
-			}
-			node1->parent = node2;
+			
+			//new
+			node1->left = node2->left;
+			node2->left = node2->right;
+			node2->right = node1->right;
+			node1->right = node2;
+			int swap;
+			swap = node1->data;
+			node1->data = node2->data;
+			node2->data = swap;	
+			
 
-			std::cout<<"tempthis ends at:"<<tempthis->data<<std::endl;
+
+//			if(node2->right == NULL){
+//				node1->left = NULL;
+//			}else{
+//				node1->left = node2->right;
+//			}
+//			node2->right = node1;
+//			if(node1->parent == NULL){
+//				this = node2;
+//				node2->parent = NULL;
+//			} else {
+//				node2->parent = node1->parent;
+//			}
+//			node1->parent = node2;
+
+			std::cout<<"this ends at:"<<this->data<<std::endl;
 			std::cout << "Rotated right" << std::endl;	
 		}
-		else if(tempthis->left->balance == -1) {
+		else if(this->left->balance == -1) {
 			//rotate left then right
 		}
 		else {
 			std::cout << "We have a problem";
 		}
 	}
-	else if (tempthis->balance == -2) {
-		if (tempthis->right->balance == -1) {
+	else if (this->balance == -2) {
+		if (this->right->balance == -1) {
 			//rotate left once
 		}
-		else if (tempthis->right->balance == 1) {
+		else if (this->right->balance == 1) {
 			//rotate right then left
 		}
 		else {
