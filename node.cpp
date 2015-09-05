@@ -22,6 +22,7 @@ public:
 	int balanceTree();
 	void search(int);
 	void search(int, int);
+	void traversal(char);
 
 };
 
@@ -369,4 +370,30 @@ void node::search(int input, int count){
 		std::cout << "We have a problem searching at the end";
 	}
 	return;
+}
+
+void node::traversal(char order){
+	if(order = 'a'){
+		std::cout << this->data << endl;
+	}
+
+	if(this->left == NULL && this->right == NULL){
+		return;
+	}
+
+	if(this->left !=NULL){
+		this->left->traversal(order);
+	}
+
+	if(order = 'b'){
+		std::cout << this->data << endl;	
+	}
+
+	if(this->right !=NULL){
+		this->right->traversal(order);
+	}
+
+	if(order = 'c'){
+		std::cout << this->data << endl;	
+	}	
 }

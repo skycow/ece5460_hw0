@@ -101,6 +101,15 @@ int main(){
 				cin >> userSearch;
 				root->search(userSearch);
 				break;
+			case 5:
+				cout << "Traversal orders:" << endl;
+				cout << "a. Pre-order traversal" << endl;
+				cout << "b. In-order traversal" << endl;
+				cout << "c. Post-order traversal" << endl;
+				cout << "Please enter type of traversal: ";
+				char order;
+				cin >> order;
+				root->traversal(order);
 			case 6: 
 				if(root != NULL){
 					cout << "Deleting tree." << endl;
