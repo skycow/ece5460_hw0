@@ -81,8 +81,14 @@ int main(){
 					root->setBalance(0);
 
 				}else{
+					cout<<"calling Insert"<<endl;
 					root->nodeInsert(temp);
 				}
+				cout<<"calling print"<<endl;
+				root->printTree();
+				cout<<"calling balance"<<endl;
+				root->balanceTree();
+				cout<<"calling print again"<<endl;
 				root->printTree();
 				break;
 			//Deletion	
@@ -105,7 +111,7 @@ int main(){
 				}
 				break;
 			case 7:
-				balanceTree
+				root->balanceTree();
 				break;
 			case 8:
 				done = true;

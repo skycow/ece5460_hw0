@@ -18,7 +18,8 @@ public:
 	void printTree();
 	void setBalance(int);
 	//void createTree();
-	void rotate();
+	void rotate(node&);
+	int balanceTree();
 
 };
 
@@ -163,53 +164,70 @@ int node::balanceTree(){
 	//calculates balance
 	this->balance = (left - right);
 
-	if(this->balance < -1 || this->balance >= 1){
-		this->rotate();
+	if(this->balance < -1 || this->balance > 1){
+		this->rotate(this*);
+		std::cout<<"after call"<<this->data<<std::endl;
 	}else{
 		if(left >= right){
-			this.height = (left + 1);
+			this->height = (left + 1);
 			return (left+1);
 		}else{
-			this.height = (right + 1);
+			this->height = (right + 1);
 			return (right+1);
 		}
 	}
 }
 
-void node::rotate() {
-	if (this->balance == 2) {
-		if (this->left->balance == 1) {
+void node::rotate(node & tempthis) {
+	if (tempthis->balance == 2) {
+		if (tempthis->left->balance == 1) {
 			//rotate right once
+			std::cout<<"tempthis begins at:"<<tempthis->data<<std::endl;
+			node* node1;
+			node* node2;
+			node1 = new node(0);
+			node2 = new node(0);
+
+			node1 = tempthis;
+			std::cout<<"node1"<<node1->data<<std::endl;
+			node2 = tempthis->left;
+			std::cout<<"node2"<<node2->data<<std::endl;
+			if(node2->right == NULL){
+				node1->left = NULL;
+			}else{
+				node1->left = node2->right;
+			}
+			node2->right = node1;
+			if(node1->parent == NULL){
+				tempthis = node2;
+				node2->parent = NULL;
+			} else {
+				node2->parent = node1->parent;
+			}
+			node1->parent = node2;
+
+			std::cout<<"tempthis ends at:"<<tempthis->data<<std::endl;
+			std::cout << "Rotated right" << std::endl;	
 		}
-		else if(this->left->balance == -1) {
+		else if(tempthis->left->balance == -1) {
 			//rotate left then right
 		}
 		else {
-			cout << "We have a problem";
+			std::cout << "We have a problem";
 		}
 	}
-	else if (this->balance == -2) {
-		if (this->right->balance == -1) {
+	else if (tempthis->balance == -2) {
+		if (tempthis->right->balance == -1) {
 			//rotate left once
 		}
-		else if (this->right->balance == 1) {
+		else if (tempthis->right->balance == 1) {
 			//rotate right then left
 		}
 		else {
-			cout << "We have a negative problem";
+			std::cout << "We have a negative problem";
 		}
 	}
 	else {
-		cout << "We have a big problem";
+		std::cout << "We have a big problem";
 	}
-		
-	
-	
-	
-	//case 3
-	
-	
-	//case 4
-
-
 }
