@@ -224,6 +224,43 @@ void node::rotate() {
 		}
 		else if(this->left->balance == -1) {
 			//rotate left then right
+
+			node* node3;
+			node* node4;
+			node3 = new node(0);
+			node4 = new node(0);
+
+			node3 = this->left;
+			node4 = this->left->right;
+			
+			node3->right = node4->right;
+			node4->right = node4->left;
+			node4->left = node3->left;
+			node3->left = node4;
+			
+			int swap;
+			swap = node3->data;
+			node3->data = node4->data;
+			node4->data = swap;
+
+
+			node* node1;
+			node* node2;
+			node1 = new node(0);
+			node2 = new node(0);
+
+			node1 = this;
+			node2 = this->left;
+			
+			node1->left = node2->left;
+			node2->left = node2->right;
+			node2->right = node1->right;
+			node1->right = node2;
+			int swap;
+			swap = node1->data;
+			node1->data = node2->data;
+			node2->data = swap;	
+
 		}
 		else {
 			std::cout << "We have a problem";
@@ -255,6 +292,42 @@ void node::rotate() {
 		}
 		else if (this->right->balance == 1) {
 			//rotate right then left
+
+			node* node1;
+			node* node2;
+			node1 = new node(0);
+			node2 = new node(0);
+
+			node1 = this->right;
+			node2 = this->right->left;
+			
+			node1->left = node2->left;
+			node2->left = node2->right;
+			node2->right = node1->right;
+			node1->right = node2;
+			int swap;
+			swap = node1->data;
+			node1->data = node2->data;
+			node2->data = swap;	
+
+
+			node* node3;
+			node* node4;
+			node3 = new node(0);
+			node4 = new node(0);
+
+			node3 = this;
+			node4 = this->right;
+			
+			node3->right = node4->right;
+			node4->right = node4->left;
+			node4->left = node3->left;
+			node3->left = node4;
+			
+			int swap;
+			swap = node3->data;
+			node3->data = node4->data;
+			node4->data = swap;
 		}
 		else {
 			std::cout << "We have a negative problem";
