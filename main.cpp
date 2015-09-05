@@ -57,7 +57,7 @@ int main(){
 							}
 							//cout << temp->getData();
 //							delete temp;z
-
+							root->balanceTree();
 						}
 						root->printTree(0);
 

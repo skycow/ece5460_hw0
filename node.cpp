@@ -141,7 +141,7 @@ void node::printTree(int count){
 }
 
 int node::balanceTree(){
-	std::cout<<"hitting";
+//	std::cout<<"hitting";
 	int right, left;
 
 	if(this->left == NULL && this->right == NULL){
@@ -166,8 +166,9 @@ int node::balanceTree(){
 
 	//calculates balance
 	this->balance = (left - right);
-
+	std::cout << left<<"->"<<right << std::endl;
 	if(this->balance < -1 || this->balance > 1){
+	std::cout << this->data <<" unbalanced"<< this->balance<<std::endl;
 		this->rotate();
 		std::cout<<"after call"<<this->data<<std::endl;
 	}else{
