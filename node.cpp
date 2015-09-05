@@ -21,6 +21,7 @@ public:
 	void rotate();
 	int balanceTree();
 	void search(int);
+	void search(int, int);
 
 };
 
@@ -339,7 +340,7 @@ void node::rotate() {
 
 void node::search(int input){
 	if(this->data == input){
-		std::cout << input <<" is at the root of the tree." << endl;
+		std::cout << input <<" is at the root of the tree." << std::endl;
 		return;
 	}
 	
