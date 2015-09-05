@@ -112,7 +112,7 @@ void node::nodeInsert(node* newNode){
 
 void node::printTree(int count){
 	if(this->left == NULL && this->right == NULL){
-		for( int i =0; i <= count; i++){
+		for( int i =0; i < count; i++){
 			std::cout << "   ";
 		}
 		std::cout << data << std::endl;
@@ -124,7 +124,7 @@ void node::printTree(int count){
 		
 	}
 
-	for( int i =0; i <= this->height; i++){
+	for( int i =0; i < count; i++){
 			std::cout << "   ";
 		}
 	std::cout << data << std::endl;
@@ -138,7 +138,7 @@ void node::printTree(int count){
 }
 
 int node::balanceTree(){
-
+	std::cout<<"hitting";
 	int right, left;
 
 	if(this->left == NULL && this->right == NULL){
