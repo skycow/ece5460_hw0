@@ -23,6 +23,7 @@ public:
 	void search(int);
 	void search(int, int);
 	void traversal(char);
+	void deleteNode(int);
 
 };
 
@@ -398,4 +399,40 @@ void node::traversal(char order){
 		std::cout << this->data << std::endl;	
 	}
 	return;	
+}
+
+void node::deleteNode(int value){
+	if(value == this.data){
+		//delete this node
+
+		if(this->left == NULL && this->right != NULL){
+			this->data = this->right->data;
+			delete this->right;
+			this->right = NULL;
+		}
+		if(this->right == NULL && this->left != NULL){
+			this->data = this->left->data;
+			delete this->left;
+			this->left = NULL;
+		}
+
+		
+
+	}
+
+	if(value < this.data){
+		if(this->left != NULL){
+			this->left->deleteNode(value);
+		}else{
+			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+		}
+	}else if (value > this.data){
+		if(this->right !=NULL){
+			this->right->deleteNode(value)
+		}else{
+			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+		}
+	}else{
+		std::cout << "we have a problem"
+	}
 }
