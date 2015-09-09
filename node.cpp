@@ -481,7 +481,8 @@ void node::startDeleteRight(){
 
 		node1 = this->right->right;
 		delete this->right;
-		this->right = node1;		 
+		this->right = node1;
+		std::cout << "Made it here" << std::endl;
 	}else{
 		this->right->deleteLeft();
 	}
@@ -500,6 +501,7 @@ void node::deleteLeft(){
 		node2 = this->left->right;
 		delete this->left;
 		this->left = node2;
+		std::cout << "Made it here again" << std::endl;
 	}else{
 		this->left->deleteLeft();
 	}
