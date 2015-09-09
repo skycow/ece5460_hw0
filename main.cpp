@@ -93,6 +93,18 @@ int main(){
 				break;
 			//Deletion	
 			case 3:
+				cout << "Please enter value to delete:";
+				int userDelete;
+				cin >> userDelete;
+				if(root == NULL){
+					cout << "Node cannot be deleted. Empty Tree!" << endl;
+				}else if(root->data == userDelete && root->left == NULL && root->right == NULL){
+					delete root;
+					root = NULL;
+				}else{
+					root->deleteNode(userDelete);
+				}
+				root->balanceTree();
 				break;
 			//Search
 			case 4:

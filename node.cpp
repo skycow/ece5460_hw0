@@ -410,29 +410,91 @@ void node::deleteNode(int value){
 			delete this->right;
 			this->right = NULL;
 		}
-		if(this->right == NULL && this->left != NULL){
+		else if(this->right == NULL && this->left != NULL){
 			this->data = this->left->data;
 			delete this->left;
 			this->left = NULL;
+		}else{
+			this->data = this->startCopyRight();
+			this->startDeleteRight();
 		}
-
-		
-
+		return;	
 	}
 
 	if(value < this.data){
 		if(this->left != NULL){
+			if(this->left->left == NULL && this->left->right == NULL){
+				delete this->left;
+				this->left = NULL;
+				return;
+			}
 			this->left->deleteNode(value);
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
 		}
 	}else if (value > this.data){
 		if(this->right !=NULL){
+			if(this->right->left == NULL && this->right->right == NULL){
+				delete this->right;
+				this->right = NULL;
+				return;
+			}
 			this->right->deleteNode(value)
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
 		}
 	}else{
 		std::cout << "we have a problem"
+	}
+}
+
+int node::StartCopyRight(){
+	if(this->right->left == NULL){
+		return this->right->data;
+	}else{
+		return this->right->copyLeft();
+	}
+}
+
+int node::copyLeft(){
+	if(this->left->left == NULL){
+		return this->left->data;
+	}else{
+		return this->left->copyLeft();
+	}
+}
+
+void node::StartDeleteRight(){
+	if(this->right->left == NULL && this->right->right == NULL){
+		delete this->right;
+		this->right = NULL;
+	}else if(this->right->left == NULL){
+		//copy children
+		node* node1;
+		node1 = new node(0);
+
+		node1 = this->right->right;
+		delete this->right;
+		this->right = node1;		 
+	}else{
+		this->right->deleteLeft();
+	}
+	return;
+}
+
+void node::deleteLeft(){
+	if(this->left->left == NULL && this->right->right == NULL){
+		delete this->left;
+		this->left = NULL;
+	}else if(this->left->left == NULL){
+		//copy children
+		node* node2;
+		node2 = new node(0);
+
+		node2 = this->left->right;
+		delete this->left;
+		this->left = node2;
+	}else{
+		this->left->copyLeft();
 	}
 }
