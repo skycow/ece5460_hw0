@@ -501,7 +501,7 @@ void node::deleteLeft(){
 		delete this->left;
 		this->left = node2;
 	}else{
-		this->left->copyLeft();
+		this->left->deleteLeft();
 	}
 }
 
