@@ -58,6 +58,7 @@ int main(){
 							//cout << temp->getData();
 							//delete temp;
 							root->balanceTree();
+							cout << "---";
 						}
 						//root->printTree(0);
 
