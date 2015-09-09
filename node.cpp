@@ -190,7 +190,7 @@ int node::balanceTree(){
 
 void node::rotate() {
 	if (this->balance == 2) {
-		if (this->left->balance == 1) {
+		if (this->left->balance >= 0) {
 			//rotate right once
 			//std::cout<<"this begins at:"<<this->data<<std::endl;
 			node* node1;
@@ -276,7 +276,8 @@ void node::rotate() {
 		}
 	}
 	else if (this->balance == -2) {
-		if (this->right->balance == -1) {
+		//if (this->right->balance == -1) {
+		if (this->right->balance <= 0) {
 			//rotate left once
 
 			node* node1;
@@ -428,7 +429,7 @@ void node::deleteNode(int value){
 
 	if(value < this->data){
 		if(this->left != NULL){
-			if(this->left->left == NULL && this->left->right == NULL){
+			if(this->left->data == value && this->left->left == NULL && this->left->right == NULL){
 				delete this->left;
 				this->left = NULL;
 				return;
@@ -439,7 +440,7 @@ void node::deleteNode(int value){
 		}
 	}else if (value > this->data){
 		if(this->right !=NULL){
-			if(this->right->left == NULL && this->right->right == NULL){
+			if(this->right->data == value && this->right->left == NULL && this->right->right == NULL){
 				delete this->right;
 				this->right = NULL;
 				return;
