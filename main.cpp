@@ -44,7 +44,7 @@ int main(){
 
 							node* temp;
 							temp = new node(conv); 
-//
+
 							//temp->setData(conv);
 
 							if(root == NULL){
@@ -56,12 +56,16 @@ int main(){
 								//cout<<"test";
 							}
 							//cout << temp->getData();
-//							delete temp;z
+							//delete temp;
 							root->balanceTree();
 						}
-						root->printTree(0);
+						//root->printTree(0);
 
-						cout << "Tree created!" << endl << endl;
+						//cout << "Tree created!" << endl << endl;
+
+						cout << "Create Tree: " << endl;
+						root->traversal('a');
+
 					}else{
 						cout << "Error opening file." << endl; 
 					}
@@ -90,6 +94,10 @@ int main(){
 				root->balanceTree();
 				//cout<<"calling print again"<<endl;
 				//root->printTree(0);
+
+				cout << "Node inserted: " << endl;
+				root->traversal('a');
+
 				break;
 			//Deletion	
 			case 3:
@@ -101,8 +109,15 @@ int main(){
 				}else if(root->getData() == userDelete && root->checkNull()){
 					delete root;
 					root = NULL;
+
+					cout << "Node deleted: " << endl;
+					root->traversal('a');
+
 				}else{
 					root->deleteNode(userDelete);
+					
+					//cout << "Node deleted: " << endl;
+					//root->traversal('a');
 				}
 				if(root != NULL){
 					root->balanceTree();

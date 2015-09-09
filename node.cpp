@@ -382,7 +382,8 @@ void node::search(int input, int count){
 
 void node::traversal(char order){
 	if(order == 'a'){
-		std::cout << this->data << std::endl;
+		//std::cout << this->data << std::endl;
+		std::cout << this->data << "  ";
 	}
 
 //	if(this->left == NULL && this->right == NULL){
@@ -394,7 +395,8 @@ void node::traversal(char order){
 	}
 
 	if(order == 'b'){
-		std::cout << this->data << std::endl;	
+		//std::cout << this->data << std::endl;
+		std::cout << this->data << "  ";	
 	}
 
 	if(this->right !=NULL){
@@ -402,7 +404,8 @@ void node::traversal(char order){
 	}
 
 	if(order == 'c'){
-		std::cout << this->data << std::endl;	
+		//std::cout << this->data << std::endl;
+		std::cout << this->data << "  ";	
 	}
 	return;	
 }
