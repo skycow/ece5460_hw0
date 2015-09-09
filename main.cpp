@@ -98,13 +98,15 @@ int main(){
 				cin >> userDelete;
 				if(root == NULL){
 					cout << "Node cannot be deleted. Empty Tree!" << endl;
-				}else if(root->data == userDelete && root->left == NULL && root->right == NULL){
+				}else if(root->getData() == userDelete && root->checkNull()){
 					delete root;
 					root = NULL;
 				}else{
 					root->deleteNode(userDelete);
 				}
-				root->balanceTree();
+				if(root != NULL){
+					root->balanceTree();
+				}
 				break;
 			//Search
 			case 4:
@@ -138,6 +140,11 @@ int main(){
 				break;
 			case 8:
 				done = true;
+				break;
+			case 9:
+				if(root != NULL){
+				root->printTree(0);
+				}
 				break;
 		}
 	}

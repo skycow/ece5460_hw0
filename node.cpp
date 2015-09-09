@@ -24,6 +24,11 @@ public:
 	void search(int, int);
 	void traversal(char);
 	void deleteNode(int);
+	int startCopyRight();
+	int copyLeft();
+	void startDeleteRight();
+	void deleteLeft();
+	bool checkNull();
 
 };
 
@@ -402,7 +407,7 @@ void node::traversal(char order){
 }
 
 void node::deleteNode(int value){
-	if(value == this.data){
+	if(value == this->data){
 		//delete this node
 
 		if(this->left == NULL && this->right != NULL){
@@ -421,7 +426,7 @@ void node::deleteNode(int value){
 		return;	
 	}
 
-	if(value < this.data){
+	if(value < this->data){
 		if(this->left != NULL){
 			if(this->left->left == NULL && this->left->right == NULL){
 				delete this->left;
@@ -432,23 +437,23 @@ void node::deleteNode(int value){
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
 		}
-	}else if (value > this.data){
+	}else if (value > this->data){
 		if(this->right !=NULL){
 			if(this->right->left == NULL && this->right->right == NULL){
 				delete this->right;
 				this->right = NULL;
 				return;
 			}
-			this->right->deleteNode(value)
+			this->right->deleteNode(value);
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
 		}
 	}else{
-		std::cout << "we have a problem"
+		std::cout << "we have a problem";
 	}
 }
 
-int node::StartCopyRight(){
+int node::startCopyRight(){
 	if(this->right->left == NULL){
 		return this->right->data;
 	}else{
@@ -464,7 +469,7 @@ int node::copyLeft(){
 	}
 }
 
-void node::StartDeleteRight(){
+void node::startDeleteRight(){
 	if(this->right->left == NULL && this->right->right == NULL){
 		delete this->right;
 		this->right = NULL;
@@ -496,5 +501,13 @@ void node::deleteLeft(){
 		this->left = node2;
 	}else{
 		this->left->copyLeft();
+	}
+}
+
+bool node::checkNull(){
+	if(this->left == NULL && this->right == NULL){
+		return true;
+	}else{
+		return false;
 	}
 }
