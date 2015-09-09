@@ -176,6 +176,15 @@ int node::balanceTree(){
 	if(this->balance < -1 || this->balance > 1){
 	//std::cout << this->data <<" unbalanced"<< this->balance<<std::endl;
 		this->rotate();
+
+		if(left >= right){
+			this->height = (left);
+			return (left);
+		}else{
+			this->height = (right);
+			return (right);
+		}
+
 		//std::cout<<"after call"<<this->data<<std::endl;
 	}else{
 		if(left >= right){

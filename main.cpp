@@ -64,8 +64,9 @@ int main(){
 
 						//cout << "Tree created!" << endl << endl;
 
-						cout << "Create Tree: " << endl;
+						cout << "Create Tree: ";
 						root->traversal('a');
+						cout << endl;
 
 					}else{
 						cout << "Error opening file." << endl; 
@@ -98,6 +99,7 @@ int main(){
 
 				cout << "Node inserted: " << endl;
 				root->traversal('a');
+				cout << endl;
 
 				break;
 			//Deletion	
@@ -113,6 +115,7 @@ int main(){
 
 					cout << "Node deleted: " << endl;
 					root->traversal('a');
+					cout << endl;
 
 				}else{
 					root->deleteNode(userDelete);
@@ -140,6 +143,7 @@ int main(){
 				char order;
 				cin >> order;
 				root->traversal(order);
+				cout << endl;
 				break;
 			case 6: 
 				if(root != NULL){
