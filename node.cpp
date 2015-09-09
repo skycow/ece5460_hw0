@@ -172,11 +172,11 @@ int node::balanceTree(){
 
 	//calculates balance
 	this->balance = (left - right);
-	std::cout << left<<"->"<<right << std::endl;
+	//std::cout << left<<"->"<<right << std::endl;
 	if(this->balance < -1 || this->balance > 1){
-	std::cout << this->data <<" unbalanced"<< this->balance<<std::endl;
+	//std::cout << this->data <<" unbalanced"<< this->balance<<std::endl;
 		this->rotate();
-		std::cout<<"after call"<<this->data<<std::endl;
+		//std::cout<<"after call"<<this->data<<std::endl;
 	}else{
 		if(left >= right){
 			this->height = (left + 1);
@@ -199,9 +199,9 @@ void node::rotate() {
 			node2 = new node(0);
 
 			node1 = this;
-			std::cout<<"node1"<<node1->data<<std::endl;
+			//std::cout<<"node1"<<node1->data<<std::endl;
 			node2 = this->left;
-			std::cout<<"node2"<<node2->data<<std::endl;
+			//std::cout<<"node2"<<node2->data<<std::endl;
 			
 			//new
 			node1->left = node2->left;
@@ -215,22 +215,22 @@ void node::rotate() {
 			
 
 
-//			if(node2->right == NULL){
-//				node1->left = NULL;
-//			}else{
-//				node1->left = node2->right;
-//			}
-//			node2->right = node1;
-//			if(node1->parent == NULL){
-//				this = node2;
-//				node2->parent = NULL;
-//			} else {
-//				node2->parent = node1->parent;
-//			}
-//			node1->parent = node2;
+			//if(node2->right == NULL){
+			//	node1->left = NULL;
+			//}else{
+			//	node1->left = node2->right;
+			//}
+			//node2->right = node1;
+			//if(node1->parent == NULL){
+			//	this = node2;
+			//	node2->parent = NULL;
+			//} else {
+			//	node2->parent = node1->parent;
+			//}
+			//node1->parent = node2;
 
 			//std::cout<<"this ends at:"<<this->data<<std::endl;
-			std::cout << "Rotated right" << std::endl;	
+			//std::cout << "Rotated right" << std::endl;	
 		}
 		else if(this->left->balance == -1) {
 			//rotate left then right
@@ -298,7 +298,7 @@ void node::rotate() {
 			node1->data = node2->data;
 			node2->data = swap;	
 
-			std::cout << "Rotated left" << std::endl;
+			//std::cout << "Rotated left" << std::endl;
 		}
 		else if (this->right->balance == 1) {
 			//rotate right then left
@@ -482,7 +482,7 @@ void node::startDeleteRight(){
 		node1 = this->right->right;
 		delete this->right;
 		this->right = node1;
-		std::cout << "Made it here" << std::endl;
+		//std::cout << "Made it here" << std::endl;
 	}else{
 		this->right->deleteLeft();
 	}
@@ -501,7 +501,7 @@ void node::deleteLeft(){
 		node2 = this->left->right;
 		delete this->left;
 		this->left = node2;
-		std::cout << "Made it here again" << std::endl;
+		//std::cout << "Made it here again" << std::endl;
 	}else{
 		this->left->deleteLeft();
 	}

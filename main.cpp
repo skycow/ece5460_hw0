@@ -84,12 +84,12 @@ int main(){
 					cout<<"calling Insert"<<endl;
 					root->nodeInsert(temp);
 				}
-				cout<<"calling print"<<endl;
-				root->printTree(0);
-				cout<<"calling balance"<<endl;
+				//cout<<"calling print"<<endl;
+				//root->printTree(0);
+				//cout<<"calling balance"<<endl;
 				root->balanceTree();
-				cout<<"calling print again"<<endl;
-				root->printTree(0);
+				//cout<<"calling print again"<<endl;
+				//root->printTree(0);
 				break;
 			//Deletion	
 			case 3:
