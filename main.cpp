@@ -7,6 +7,8 @@
 
 using namespace std;
 
+//This is the main function for an avl tree. This function will print the menu
+//of choices to the user and will take the choices from the user.
 int main(){
 
 	
@@ -21,13 +23,14 @@ int main(){
 		choice = menu();
 	
 		switch(choice){
+			//Create Tree
 			case 1:{
 				//check if tree exists
 				if(root != NULL){
 					root->deleteTree();
 					root = NULL;
 				}
-
+					//get filename from user
 					cout << "Enter name of file to create tree from: ";
 					string filename;
 					cin >> filename;
@@ -75,13 +78,16 @@ int main(){
 				
 				break;
 			}
-			//Insertion
+			//Insertion of a node
 			case 2:
+				//get input from the user
 				cout << "Please enter value to insert:";
 				int userInsert;
 				cin >> userInsert;
 				node* temp;
 				temp = new node(userInsert); 
+				
+				//if no tree exists, start a new tree
 				if(root == NULL){
 					root = temp;
 					root->setBalance(0);
@@ -102,7 +108,7 @@ int main(){
 				cout << endl;
 
 				break;
-			//Deletion	
+			//Deletion of a node	
 			case 3:
 				cout << "Please enter value to delete:";
 				int userDelete;
@@ -127,13 +133,14 @@ int main(){
 					root->balanceTree();
 				}
 				break;
-			//Search
+			//Search for a node
 			case 4:
 				cout << "Please enter value to search for:";
 				int userSearch;
 				cin >> userSearch;
 				root->search(userSearch);
 				break;
+			//Tree traversals
 			case 5:
 				cout << "Traversal orders:" << endl;
 				cout << "a. Pre-order traversal" << endl;
@@ -145,6 +152,7 @@ int main(){
 				root->traversal(order);
 				cout << endl;
 				break;
+			//Delete the entire tree
 			case 6: 
 				if(root != NULL){
 					cout << "Deleting tree." << endl;
@@ -155,12 +163,16 @@ int main(){
 					cout << "No tree to delete." << endl;
 				}
 				break;
+			//Check balance
 			case 7:
 				root->balanceTree();
 				break;
+			//Exit the program
 			case 8:
 				done = true;
 				break;
+			//Secret option to print a visual representation 
+			//of the tree
 			case 9:
 				if(root != NULL){
 				root->printTree(0);
