@@ -17,13 +17,14 @@ public:
 	int getData();
 	void printTree(int);
 	void setBalance(int);
+	int getBalance();
 	//void createTree();
 	void rotate();
 	int balanceTree();
 	void search(int);
 	void search(int, int);
 	void traversal(char);
-	void deleteNode(int);
+	bool deleteNode(int);
 	int startCopyRight();
 	int copyLeft();
 	void startDeleteRight();
@@ -50,6 +51,21 @@ void node::setBalance(int value){
 
 int node::getData(){
 	return data;
+}
+
+int node::getBalance(){
+	int left, right;
+	if(this->left ==  NULL){
+		left = 0;
+	}else{
+		left = this->left->height;
+	}
+	if(this->right ==  NULL){
+		right = 0;
+	}else{
+		right = this->right->height;
+	}
+	return (left-right);
 }
 
 node::node(int value){
@@ -365,7 +381,7 @@ void node::traversal(char order){
 	return;	
 }
 
-void node::deleteNode(int value){
+bool node::deleteNode(int value){
 	if(value == this->data){
 		//delete this node
 		if(this->left == NULL && this->right != NULL){
@@ -381,7 +397,7 @@ void node::deleteNode(int value){
 			this->data = this->startCopyRight();
 			this->startDeleteRight();
 		}
-		return;	
+		return true;	
 	}
 
 	if(value < this->data){
@@ -389,25 +405,28 @@ void node::deleteNode(int value){
 			if(this->left->data == value && this->left->left == NULL && this->left->right == NULL){
 				delete this->left;
 				this->left = NULL;
-				return;
+				return true;
 			}
-			this->left->deleteNode(value);
+			return this->left->deleteNode(value);
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			return false;
 		}
 	}else if (value > this->data){
 		if(this->right !=NULL){
 			if(this->right->data == value && this->right->left == NULL && this->right->right == NULL){
 				delete this->right;
 				this->right = NULL;
-				return;
+				return true;
 			}
-			this->right->deleteNode(value);
+			return this->right->deleteNode(value);
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			return false;
 		}
 	}else{
 		std::cout << "we have a problem";
+		return false;
 	}
 }
 

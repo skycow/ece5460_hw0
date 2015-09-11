@@ -25,48 +25,47 @@ int main(){
 		switch(choice){
 			//Create Tree
 			case 1:{
-				//check if tree exists
-				if(root != NULL){
-					root->deleteTree();
-					root = NULL;
-				}
-					//get filename from user
-					cout << "Enter name of file to create tree from: ";
-					string filename;
-					cin >> filename;
-					
-					ifstream inputFile (filename.c_str());
-					if(inputFile.is_open() && inputFile.good()){
-						cout << "Creating tree..." << endl;
-						
+				//get filename from user
+				cout << "Enter name of file to create tree from: ";
+				string filename;
+				cin >> filename;
+				
+				ifstream inputFile (filename.c_str());
+				if(inputFile.is_open() && inputFile.good()){
 
-
-						while( getline(inputFile, num) ){
-
-							int conv = atoi ( num.c_str() );
-
-							node* temp;
-							temp = new node(conv); 
-
-							if(root == NULL){
-								root = temp;
-								root->setBalance(0);
-							}else{
-								root->nodeInsert(temp);
-							}
-							
-							root->balanceTree();
-							
-						}
-
-						cout << "Create Tree: ";
-						root->traversal('a');
-						cout << endl;
-
-					}else{
-						cout << "Error opening file." << endl; 
+					//check if tree exists
+					if(root != NULL){
+						root->deleteTree();
+						root = NULL;
 					}
-					inputFile.close();
+
+					while( getline(inputFile, num) ){
+
+						int conv = atoi ( num.c_str() );
+
+						node* temp;
+						temp = new node(conv); 
+	
+						if(root == NULL){
+							root = temp;
+							root->setBalance(0);
+						}else{
+							root->nodeInsert(temp);
+						}
+								
+						root->balanceTree();
+							
+					}
+
+					cout << "Create Tree: ";
+					root->traversal('a');
+					cout << endl;
+					cout << "Check balance: " << root->getBalance() << endl;
+
+				}else{
+					cout << "Error opening file." << endl; 
+				}
+				inputFile.close();
 				
 				break;
 			}
@@ -85,49 +84,63 @@ int main(){
 					root->setBalance(0);
 
 				}else{
-					cout<<"calling Insert"<<endl;
 					root->nodeInsert(temp);
 				}
 				
 				root->balanceTree();
 				
-				cout << "Node inserted: " << endl;
+				
+				cout << "Node inserted: ";
 				
 				root->traversal('a');
 				cout << endl;
+				cout << "Check balance: " << root->getBalance() << endl;
 
 				break;
 			//Deletion of a node	
 			case 3:
 				cout << "Please enter value to delete:";
 				int userDelete;
+				bool success;
 				cin >> userDelete;
 				if(root == NULL){
 					cout << "Node cannot be deleted. Empty Tree!" << endl;
+					success = false;
 				}else if(root->getData() == userDelete && root->checkNull()){
 					delete root;
 					root = NULL;
+					success = true;
 
 					cout << "Node deleted: " << endl;
 					root->traversal('a');
 					cout << endl;
+					root->balanceTree();
+					cout << "Check balance: " << root->getBalance() << endl;
 
 				}else{
-					root->deleteNode(userDelete);
 					
-					//cout << "Node deleted: " << endl;
-					//root->traversal('a');
+					success = root->deleteNode(userDelete);
 				}
-				if(root != NULL){
-					root->balanceTree();
+
+				if(success){
+						cout << "Node deleted: ";
+						root->traversal('a');
+						cout << endl;
+						root->balanceTree();
+						cout << "Check balance: " << root->getBalance() << endl;
 				}
+
 				break;
 			//Search for a node
 			case 4:
 				cout << "Please enter value to search for:";
 				int userSearch;
 				cin >> userSearch;
+				if(root == NULL){
+					cout << "Node cannot be found. Empty Tree!" << endl;
+				}else{
 				root->search(userSearch);
+				}
 				break;
 			//Tree traversals
 			case 5:
@@ -138,13 +151,16 @@ int main(){
 				cout << "Please enter type of traversal: ";
 				char order;
 				cin >> order;
-				root->traversal(order);
-				cout << endl;
+				if(root == NULL){
+					cout << "Cannot traverse tree. Empty Tree!" << endl;
+				}else{
+					root->traversal(order);
+					cout << endl;
+				}
 				break;
 			//Delete the entire tree
 			case 6: 
 				if(root != NULL){
-					cout << "Deleting tree." << endl;
 					root->deleteTree();
 					root = NULL;
 					cout << "Tree deleted." << endl;
@@ -154,7 +170,12 @@ int main(){
 				break;
 			//Check balance
 			case 7:
-				root->balanceTree();
+				if(root == NULL){
+					cout << "Cannot balance tree. Empty Tree!" << endl;
+				}else{
+					root->balanceTree();
+					cout << "Check balance: " << root->getBalance() << endl;
+				}
 				break;
 			//Exit the program
 			case 8:
@@ -168,6 +189,7 @@ int main(){
 				}
 				break;
 		}
+		cout << endl;
 	}
 
 	return 0;
