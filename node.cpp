@@ -1,5 +1,7 @@
 #include <cstddef>
 #include <iostream>
+#include <fstream>
+
 
 class node{
 	int data;
@@ -32,14 +34,6 @@ public:
 	bool checkNull();
 
 };
-
-//node::node(){
-//	//data =  -1;
-//	height = -1;
-//	left = NULL;
-//	right = NULL;
-//	parent = NULL;
-//}
 
 void node::setData(int value){
 	data = value;
@@ -329,6 +323,10 @@ void node::rotate() {
 void node::search(int input){
 	if(this->data == input){
 		std::cout << input <<" is at the root of the tree." << std::endl;
+		std::ofstream fout;
+		fout.open("cowley-A01209720.txt", std::ios::app);
+		fout << input <<" is at the root of the tree." << std::endl;
+		fout.close();
 		return;
 	}
 	
@@ -345,6 +343,11 @@ void node::search(int input, int count){
 	if(this->data == input){
 		std::cout << input <<" is at height " << count;
 		std::cout << " in the tree." << std::endl;
+		std::ofstream fout;
+		fout.open("cowley-A01209720.txt", std::ios::app);
+		fout << input <<" is at height " << count;
+		fout << " in the tree." << std::endl;
+		fout.close();
 		return;
 	}
 
@@ -361,6 +364,11 @@ void node::search(int input, int count){
 void node::traversal(char order){
 	if(order == 'a'){
 		std::cout << this->data << "  ";
+		std::ofstream fout;
+		fout.open("cowley-A01209720.txt", std::ios::app);
+		fout << this->data << "  ";
+		fout.close();
+		
 	}
 
 	if(this->left !=NULL){
@@ -369,6 +377,10 @@ void node::traversal(char order){
 
 	if(order == 'b'){
 		std::cout << this->data << "  ";	
+		std::ofstream fout;
+		fout.open("cowley-A01209720.txt", std::ios::app);
+		fout << this->data << "  ";
+		fout.close();		
 	}
 
 	if(this->right !=NULL){
@@ -376,7 +388,11 @@ void node::traversal(char order){
 	}
 
 	if(order == 'c'){
-		std::cout << this->data << "  ";	
+		std::cout << this->data << "  ";
+		std::ofstream fout;
+		fout.open("cowley-A01209720.txt", std::ios::app);
+		fout << this->data << "  ";
+		fout.close();
 	}
 	return;	
 }
@@ -410,6 +426,10 @@ bool node::deleteNode(int value){
 			return this->left->deleteNode(value);
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			std::ofstream fout;
+			fout.open("cowley-A01209720.txt", std::ios::app);
+			fout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			fout.close();
 			return false;
 		}
 	}else if (value > this->data){
@@ -422,6 +442,10 @@ bool node::deleteNode(int value){
 			return this->right->deleteNode(value);
 		}else{
 			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			std::ofstream fout;
+			fout.open("cowley-A01209720.txt", std::ios::app);
+			fout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			fout.close();
 			return false;
 		}
 	}else{

@@ -21,5 +21,6 @@ int menu(){
 	cout << "8. Exit" << endl;
 	cout << "Choose the option to be performed: " ;
 	cin >> choice;
+	cout << endl;
 	return choice;
 }

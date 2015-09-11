@@ -14,8 +14,13 @@ int main(){
 	
 	int choice;
 	bool done = false;
-	//ifstream inputFile ("Input.txt");
-	ofstream outputFile;
+	ofstream fout("cowley-A01209720.txt");
+	fout.close();
+	fout.open("cowley-A01209720.txt");
+	if(fout.is_open()){
+	}else{
+		cout << "There is a problem with the output file." << endl; 
+	}
 	string num;
 	node* root = NULL;
 
@@ -58,12 +63,18 @@ int main(){
 					}
 
 					cout << "Create Tree: ";
+					fout << "Create Tree: ";
+					fout.close();
 					root->traversal('a');
+					fout.open("cowley-A01209720.txt", ios::app);
 					cout << endl;
+					fout << endl;
 					cout << "Check balance: " << root->getBalance() << endl;
+					fout << "Check balance: " << root->getBalance() << endl;
 
 				}else{
 					cout << "Error opening file." << endl; 
+					fout << "Error opening file." << endl; 
 				}
 				inputFile.close();
 				
@@ -91,10 +102,14 @@ int main(){
 				
 				
 				cout << "Node inserted: ";
-				
+				fout << "Node inserted: ";
+				fout.close();
 				root->traversal('a');
+				fout.open("cowley-A01209720.txt", ios::app);
 				cout << endl;
+				fout << endl;
 				cout << "Check balance: " << root->getBalance() << endl;
+				fout << "Check balance: " << root->getBalance() << endl;
 
 				break;
 			//Deletion of a node	
@@ -105,6 +120,7 @@ int main(){
 				cin >> userDelete;
 				if(root == NULL){
 					cout << "Node cannot be deleted. Empty Tree!" << endl;
+					fout << "Node cannot be deleted. Empty Tree!" << endl;
 					success = false;
 				}else if(root->getData() == userDelete && root->checkNull()){
 					delete root;
@@ -112,10 +128,15 @@ int main(){
 					success = true;
 
 					cout << "Node deleted: " << endl;
+					fout << "Node deleted: " << endl;
+					fout.close();
 					root->traversal('a');
+					fout.open("cowley-A01209720.txt", ios::app);
 					cout << endl;
+					fout << endl;
 					root->balanceTree();
 					cout << "Check balance: " << root->getBalance() << endl;
+					fout << "Check balance: " << root->getBalance() << endl;
 
 				}else{
 					
@@ -124,10 +145,15 @@ int main(){
 
 				if(success){
 						cout << "Node deleted: ";
+						fout << "Node deleted: ";
+						fout.close();
 						root->traversal('a');
+						fout.open("cowley-A01209720.txt", ios::app);
 						cout << endl;
+						fout << endl;
 						root->balanceTree();
 						cout << "Check balance: " << root->getBalance() << endl;
+						fout << "Check balance: " << root->getBalance() << endl;
 				}
 
 				break;
@@ -138,6 +164,7 @@ int main(){
 				cin >> userSearch;
 				if(root == NULL){
 					cout << "Node cannot be found. Empty Tree!" << endl;
+					fout << "Node cannot be found. Empty Tree!" << endl;
 				}else{
 				root->search(userSearch);
 				}
@@ -153,9 +180,11 @@ int main(){
 				cin >> order;
 				if(root == NULL){
 					cout << "Cannot traverse tree. Empty Tree!" << endl;
+					fout << "Cannot traverse tree. Empty Tree!" << endl;
 				}else{
 					root->traversal(order);
 					cout << endl;
+					fout << endl;
 				}
 				break;
 			//Delete the entire tree
@@ -164,22 +193,28 @@ int main(){
 					root->deleteTree();
 					root = NULL;
 					cout << "Tree deleted." << endl;
+					fout << "Tree deleted." << endl;
 				}else{
 					cout << "No tree to delete." << endl;
+					fout << "No tree to delete." << endl;
 				}
 				break;
 			//Check balance
 			case 7:
 				if(root == NULL){
 					cout << "Cannot balance tree. Empty Tree!" << endl;
+					fout << "Cannot balance tree. Empty Tree!" << endl;
 				}else{
 					root->balanceTree();
 					cout << "Check balance: " << root->getBalance() << endl;
+					fout << "Check balance: " << root->getBalance() << endl;
 				}
 				break;
 			//Exit the program
 			case 8:
 				done = true;
+				fout << endl << endl;
+				fout.close();
 				break;
 			//Secret option to print a visual representation 
 			//of the tree
