@@ -3,6 +3,9 @@
 
 using namespace std;
 
+
+//this function prints out the menu choices
+//for the avl tree program
 int menu(){
 
 	int choice;

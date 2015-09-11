@@ -81,20 +81,12 @@ void node::deleteTree(){
 }
 
 void node::nodeInsert(node* newNode){
-	//if no tree exists
-	//if(this == NULL){
-	//	this = newNode;
-	//	newNode->height = 0;
-	//}
 
 	if(this->data >= newNode->data){
 		if(this->left == NULL){
 			this->left = newNode;
 			newNode->parent = this;
 			newNode->height = (this->height+1);
-			//if(this->right == NULL){
-			//	this->balance = 
-			//}
 			return;
 
 		}else{
@@ -106,9 +98,6 @@ void node::nodeInsert(node* newNode){
 			this->right = newNode;
 			newNode->parent = this;
 			newNode->height = (this->height+1);
-
-			//std::cout<<this->right->data;
-			//std::cout<<newNode->data;
 
 			return;
 
@@ -147,7 +136,6 @@ void node::printTree(int count){
 }
 
 int node::balanceTree(){
-//	std::cout<<"hitting";
 	int right, left;
 
 	if(this->left == NULL && this->right == NULL){
@@ -172,9 +160,7 @@ int node::balanceTree(){
 
 	//calculates balance
 	this->balance = (left - right);
-	//std::cout << left<<"->"<<right << std::endl;
 	if(this->balance < -1 || this->balance > 1){
-	//std::cout << this->data <<" unbalanced"<< this->balance<<std::endl;
 		this->rotate();
 
 		if(left >= right){
@@ -185,7 +171,6 @@ int node::balanceTree(){
 			return (right);
 		}
 
-		//std::cout<<"after call"<<this->data<<std::endl;
 	}else{
 		if(left >= right){
 			this->height = (left + 1);
@@ -201,18 +186,14 @@ void node::rotate() {
 	if (this->balance == 2) {
 		if (this->left->balance >= 0) {
 			//rotate right once
-			//std::cout<<"this begins at:"<<this->data<<std::endl;
 			node* node1;
 			node* node2;
 			node1 = new node(0);
 			node2 = new node(0);
 
 			node1 = this;
-			//std::cout<<"node1"<<node1->data<<std::endl;
 			node2 = this->left;
-			//std::cout<<"node2"<<node2->data<<std::endl;
 			
-			//new
 			node1->left = node2->left;
 			node2->left = node2->right;
 			node2->right = node1->right;
@@ -220,26 +201,7 @@ void node::rotate() {
 			int swap;
 			swap = node1->data;
 			node1->data = node2->data;
-			node2->data = swap;	
-			
-
-
-			//if(node2->right == NULL){
-			//	node1->left = NULL;
-			//}else{
-			//	node1->left = node2->right;
-			//}
-			//node2->right = node1;
-			//if(node1->parent == NULL){
-			//	this = node2;
-			//	node2->parent = NULL;
-			//} else {
-			//	node2->parent = node1->parent;
-			//}
-			//node1->parent = node2;
-
-			//std::cout<<"this ends at:"<<this->data<<std::endl;
-			//std::cout << "Rotated right" << std::endl;	
+			node2->data = swap;		
 		}
 		else if(this->left->balance == -1) {
 			//rotate left then right
@@ -262,7 +224,6 @@ void node::rotate() {
 			node3->data = node4->data;
 			node4->data = swap;
 
-
 			node* node1;
 			node* node2;
 			node1 = new node(0);
@@ -278,17 +239,14 @@ void node::rotate() {
 			swap = node1->data;
 			node1->data = node2->data;
 			node2->data = swap;	
-
 		}
 		else {
 			std::cout << "We have a problem";
 		}
 	}
 	else if (this->balance == -2) {
-		//if (this->right->balance == -1) {
 		if (this->right->balance <= 0) {
 			//rotate left once
-
 			node* node1;
 			node* node2;
 			node1 = new node(0);
@@ -306,12 +264,9 @@ void node::rotate() {
 			swap = node1->data;
 			node1->data = node2->data;
 			node2->data = swap;	
-
-			//std::cout << "Rotated left" << std::endl;
 		}
 		else if (this->right->balance == 1) {
 			//rotate right then left
-
 			node* node1;
 			node* node2;
 			node1 = new node(0);
@@ -328,7 +283,6 @@ void node::rotate() {
 			swap = node1->data;
 			node1->data = node2->data;
 			node2->data = swap;	
-
 
 			node* node3;
 			node* node4;
@@ -369,7 +323,6 @@ void node::search(int input){
 	} else {
 		std::cout << "We have a problem searching";
 	}
-	
 }
 
 void node::search(int input, int count){
@@ -391,20 +344,14 @@ void node::search(int input, int count){
 
 void node::traversal(char order){
 	if(order == 'a'){
-		//std::cout << this->data << std::endl;
 		std::cout << this->data << "  ";
 	}
-
-//	if(this->left == NULL && this->right == NULL){
-//		return;
-//	}
 
 	if(this->left !=NULL){
 		this->left->traversal(order);
 	}
 
 	if(order == 'b'){
-		//std::cout << this->data << std::endl;
 		std::cout << this->data << "  ";	
 	}
 
@@ -413,7 +360,6 @@ void node::traversal(char order){
 	}
 
 	if(order == 'c'){
-		//std::cout << this->data << std::endl;
 		std::cout << this->data << "  ";	
 	}
 	return;	
@@ -422,7 +368,6 @@ void node::traversal(char order){
 void node::deleteNode(int value){
 	if(value == this->data){
 		//delete this node
-
 		if(this->left == NULL && this->right != NULL){
 			this->data = this->right->data;
 			delete this->right;
@@ -494,7 +439,6 @@ void node::startDeleteRight(){
 		node1 = this->right->right;
 		delete this->right;
 		this->right = node1;
-		//std::cout << "Made it here" << std::endl;
 	}else{
 		this->right->deleteLeft();
 	}
@@ -513,7 +457,6 @@ void node::deleteLeft(){
 		node2 = this->left->right;
 		delete this->left;
 		this->left = node2;
-		//std::cout << "Made it here again" << std::endl;
 	}else{
 		this->left->deleteLeft();
 	}

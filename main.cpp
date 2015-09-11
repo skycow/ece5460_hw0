@@ -48,24 +48,16 @@ int main(){
 							node* temp;
 							temp = new node(conv); 
 
-							//temp->setData(conv);
-
 							if(root == NULL){
 								root = temp;
 								root->setBalance(0);
-								//cout << "root";
 							}else{
 								root->nodeInsert(temp);
-								//cout<<"test";
 							}
-							//cout << temp->getData();
-							//delete temp;
+							
 							root->balanceTree();
-							//cout << "---";
+							
 						}
-						//root->printTree(0);
-
-						//cout << "Tree created!" << endl << endl;
 
 						cout << "Create Tree: ";
 						root->traversal('a');
@@ -96,14 +88,11 @@ int main(){
 					cout<<"calling Insert"<<endl;
 					root->nodeInsert(temp);
 				}
-				//cout<<"calling print"<<endl;
-				//root->printTree(0);
-				//cout<<"calling balance"<<endl;
+				
 				root->balanceTree();
-				//cout<<"calling print again"<<endl;
-				//root->printTree(0);
-
+				
 				cout << "Node inserted: " << endl;
+				
 				root->traversal('a');
 				cout << endl;
 
