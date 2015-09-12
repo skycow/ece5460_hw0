@@ -1,2 +1,4 @@
+Create Tree: 27  7  6  2  26  24  63  45  46  86  
+Check balance: 0
 
 

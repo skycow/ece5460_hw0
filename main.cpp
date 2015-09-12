@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
-#include "menu.h"
 #include "node.cpp"
 #include <cstddef>
 #include <stdlib.h>
 
 using namespace std;
+
+//prototype
+int main();
 
 //This is the main function for an avl tree. This function will print the menu
 //of choices to the user and will take the choices from the user.
@@ -162,29 +164,65 @@ int main(){
 				cout << "Please enter value to search for:";
 				int userSearch;
 				cin >> userSearch;
+				cout << "Search: ";
+				fout << "Search: ";
+
 				if(root == NULL){
 					cout << "Node cannot be found. Empty Tree!" << endl;
 					fout << "Node cannot be found. Empty Tree!" << endl;
 				}else{
-				root->search(userSearch);
+					fout.close();
+					//making sure heights are updated
+					root->balanceTree());
+					//performing search
+					root->search(userSearch);
+					fout.open("cowley-A01209720.txt", ios::app);
 				}
 				break;
 			//Tree traversals
 			case 5:
 				cout << "Traversal orders:" << endl;
-				cout << "a. Pre-order traversal" << endl;
-				cout << "b. In-order traversal" << endl;
-				cout << "c. Post-order traversal" << endl;
+				cout << "1. Pre-order traversal" << endl;
+				cout << "2. In-order traversal" << endl;
+				cout << "3. Post-order traversal" << endl;
 				cout << "Please enter type of traversal: ";
+				int orderIn;
 				char order;
-				cin >> order;
-				if(root == NULL){
-					cout << "Cannot traverse tree. Empty Tree!" << endl;
-					fout << "Cannot traverse tree. Empty Tree!" << endl;
+				cin >> orderIn;
+
+				if(orderIn == 1){
+					order == 'a';
+				}else if(orderIn == 2){
+					order == 'b';
+				}else if(orderIn == 3){
+					order == 'c';
 				}else{
-					root->traversal(order);
-					cout << endl;
-					fout << endl;
+					order == 'd';
+				}
+				if(order == 'd'){
+				}else{
+					if(root == NULL){
+						cout << "Traversal: Cannot traverse tree. Empty Tree!" << endl;
+						fout << "Traversal: Cannot traverse tree. Empty Tree!" << endl;
+					}else{
+
+						if(order == 'a'){
+							cout << "Traversal: Pre-Order: ";
+							cout << "Traversal: Pre-Order: ";
+						}else if(order == 'b'){
+							cout << "Traversal: In-Order: ";
+							cout << "Traversal: In-Order: ";
+						}else{
+							cout << "Traversal: Post-Order: ";
+							cout << "Traversal: Post-Order: ";
+						}
+
+						fout.close();
+						root->traversal(order);
+						fout.open("cowley-A01209720.txt", ios::app);
+						cout << endl;
+						fout << endl;
+					}
 				}
 				break;
 			//Delete the entire tree
@@ -228,4 +266,23 @@ int main(){
 	}
 
 	return 0;
+}
+
+int menu(){
+
+	int choice;
+
+	cout << "Menu options:" << endl;
+	cout << "1. Create Tree" << endl;
+	cout << "2. Insertion" << endl;
+	cout << "3. Deletion" << endl;
+	cout << "4. Search" << endl;
+	cout << "5. Traversal" << endl;
+	cout << "6. Delete Tree" << endl;
+	cout << "7. Check Balance" << endl;
+	cout << "8. Exit" << endl;
+	cout << "Choose the option to be performed: " ;
+	cin >> choice;
+	cout << endl;
+	return choice;
 }
