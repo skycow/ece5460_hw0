@@ -503,10 +503,10 @@ bool node::deleteNode(int value){
 			return this->left->deleteNode(value);
 		}else{
 			//node not found in tree
-			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			std::cout << "Deletion: Node cannot be found. Deletion cannot be performed" << std::endl;
 			std::ofstream fout;
 			fout.open("cowley-A01209720.txt", std::ios::app);
-			fout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			fout << "Deletion: Node cannot be found. Deletion cannot be performed" << std::endl;
 			fout.close();
 			return false;
 		}
@@ -523,10 +523,10 @@ bool node::deleteNode(int value){
 			return this->right->deleteNode(value);
 		}else{
 			//node not found in tree
-			std::cout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			std::cout << "Deletion: Node cannot be found. Deletion cannot be performed" << std::endl;
 			std::ofstream fout;
 			fout.open("cowley-A01209720.txt", std::ios::app);
-			fout << "Node cannot be found. Deletion cannot be performed" << std::endl;
+			fout << "Deletion: Node cannot be found. Deletion cannot be performed" << std::endl;
 			fout.close();
 			return false;
 		}

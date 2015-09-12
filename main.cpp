@@ -116,6 +116,7 @@ int main(){
 				break;
 			//Deletion of a node	
 			case 3:
+				//get user input
 				cout << "Please enter value to delete:";
 				int userDelete;
 				bool success;
@@ -125,23 +126,18 @@ int main(){
 					fout << "Deletion: Node cannot be deleted. Empty Tree!" << endl;
 					success = false;
 				}else if(root->getData() == userDelete && root->checkNull()){
+					//deletes the root if it is the only node in the tree
 					delete root;
 					root = NULL;
-					success = true;
+					success = false;
 
-					cout << "Deletion: " << endl;
-					fout << "Deletion: " << endl;
-					fout.close();
-					root->traversal('a');
-					fout.open("cowley-A01209720.txt", ios::app);
-					cout << endl;
-					fout << endl;
-					root->balanceTree();
-					cout << "Check balance: " << root->getBalance() << endl;
-					fout << "Check balance: " << root->getBalance() << endl;
+					cout << "Deletion: Root node deleted." << endl;
+					fout << "Deletion: Root node deleted." << endl;
+					cout << "Check balance: 0" << endl;
+					fout << "Check balance: 0" << endl;
 
 				}else{
-					
+					//searches tree and deletes node if found
 					success = root->deleteNode(userDelete);
 				}
 
@@ -161,12 +157,13 @@ int main(){
 				break;
 			//Search for a node
 			case 4:
+				//get user input
 				cout << "Please enter value to search for:";
 				int userSearch;
 				cin >> userSearch;
 				cout << "Search: ";
 				fout << "Search: ";
-
+				//checks for empty tree
 				if(root == NULL){
 					cout << "Node cannot be found. Empty Tree!" << endl;
 					fout << "Node cannot be found. Empty Tree!" << endl;
@@ -181,6 +178,7 @@ int main(){
 				break;
 			//Tree traversals
 			case 5:
+				//get user input
 				cout << "Traversal orders:" << endl;
 				cout << "1. Pre-order traversal" << endl;
 				cout << "2. In-order traversal" << endl;
@@ -189,7 +187,7 @@ int main(){
 				int orderIn;
 				char order;
 				cin >> orderIn;
-
+				//convert from int to char
 				if(orderIn == 1){
 					order == 'a';
 				}else if(orderIn == 2){
@@ -201,6 +199,7 @@ int main(){
 				}
 				if(order == 'd'){
 				}else{
+					//check for empty tree
 					if(root == NULL){
 						cout << "Traversal: Cannot traverse tree. Empty Tree!" << endl;
 						fout << "Traversal: Cannot traverse tree. Empty Tree!" << endl;
@@ -218,6 +217,7 @@ int main(){
 						}
 
 						fout.close();
+						//traverse tree
 						root->traversal(order);
 						fout.open("cowley-A01209720.txt", ios::app);
 						cout << endl;
