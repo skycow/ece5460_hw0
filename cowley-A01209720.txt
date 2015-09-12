@@ -1,11 +1,11 @@
 Create Tree: 27  7  6  2  26  24  63  45  46  86  
 Check balance: 0
-Node inserted: 27  7  6  2  24  22  26  63  45  46  86  
+Traversal: Pre-Order: 27  7  6  2  26  24  63  45  46  86  
+Node inserted: 27  7  6  2  24  23  26  63  45  46  86  
 Check balance: 0
-Deletion: 27  7  6  2  24  26  63  45  46  86  
-Check balance: 0
-Tree deleted.
-Cannot balance tree. Empty Tree!
-Node inserted: 22  
-Check balance: 0
-Deletion: 
+Traversal: In-Order: 2  6  7  23  24  26  27  45  46  63  86  
+Traversal: Post-Order: 2  6  23  26  24  7  46  45  86  63  27  
+Search: 45 is at height 2 in the tree.
+Search: 67 was not found in the tree. 
+
+

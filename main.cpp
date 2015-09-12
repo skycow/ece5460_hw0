@@ -75,8 +75,8 @@ int main(){
 					fout << "Check balance: " << root->getBalance() << endl;
 
 				}else{
-					cout << "Error opening file." << endl; 
-					fout << "Error opening file." << endl; 
+					cout << "Create Tree: Error opening file." << endl; 
+					fout << "Create Tree: Error opening file." << endl; 
 				}
 				inputFile.close();
 				
@@ -117,7 +117,7 @@ int main(){
 			//Deletion of a node	
 			case 3:
 				//get user input
-				cout << "Please enter value to delete:";
+				cout << "Please enter value to delete: ";
 				int userDelete;
 				bool success;
 				cin >> userDelete;
@@ -158,7 +158,7 @@ int main(){
 			//Search for a node
 			case 4:
 				//get user input
-				cout << "Please enter value to search for:";
+				cout << "Please enter value to search for: ";
 				int userSearch;
 				cin >> userSearch;
 				cout << "Search: ";
@@ -187,15 +187,16 @@ int main(){
 				int orderIn;
 				char order;
 				cin >> orderIn;
+				cout << endl;
 				//convert from int to char
 				if(orderIn == 1){
-					order == 'a';
+					order = 'a';
 				}else if(orderIn == 2){
-					order == 'b';
+					order = 'b';
 				}else if(orderIn == 3){
-					order == 'c';
+					order = 'c';
 				}else{
-					order == 'd';
+					order = 'd';
 				}
 				if(order == 'd'){
 				}else{
@@ -207,13 +208,13 @@ int main(){
 
 						if(order == 'a'){
 							cout << "Traversal: Pre-Order: ";
-							cout << "Traversal: Pre-Order: ";
+							fout << "Traversal: Pre-Order: ";
 						}else if(order == 'b'){
 							cout << "Traversal: In-Order: ";
-							cout << "Traversal: In-Order: ";
+							fout << "Traversal: In-Order: ";
 						}else{
 							cout << "Traversal: Post-Order: ";
-							cout << "Traversal: Post-Order: ";
+							fout << "Traversal: Post-Order: ";
 						}
 
 						fout.close();
