@@ -7,7 +7,7 @@
 using namespace std;
 
 //prototype
-int main();
+int menu();
 
 //This is the main function for an avl tree. This function will print the menu
 //of choices to the user and will take the choices from the user.
@@ -85,7 +85,7 @@ int main(){
 			//Insertion of a node
 			case 2:
 				//get input from the user
-				cout << "Please enter value to insert:";
+				cout << "Please enter value to insert: ";
 				int userInsert;
 				cin >> userInsert;
 				node* temp;
@@ -121,16 +121,16 @@ int main(){
 				bool success;
 				cin >> userDelete;
 				if(root == NULL){
-					cout << "Node cannot be deleted. Empty Tree!" << endl;
-					fout << "Node cannot be deleted. Empty Tree!" << endl;
+					cout << "Deletion: Node cannot be deleted. Empty Tree!" << endl;
+					fout << "Deletion: Node cannot be deleted. Empty Tree!" << endl;
 					success = false;
 				}else if(root->getData() == userDelete && root->checkNull()){
 					delete root;
 					root = NULL;
 					success = true;
 
-					cout << "Node deleted: " << endl;
-					fout << "Node deleted: " << endl;
+					cout << "Deletion: " << endl;
+					fout << "Deletion: " << endl;
 					fout.close();
 					root->traversal('a');
 					fout.open("cowley-A01209720.txt", ios::app);
@@ -146,8 +146,8 @@ int main(){
 				}
 
 				if(success){
-						cout << "Node deleted: ";
-						fout << "Node deleted: ";
+						cout << "Deletion: ";
+						fout << "Deletion: ";
 						fout.close();
 						root->traversal('a');
 						fout.open("cowley-A01209720.txt", ios::app);
@@ -173,7 +173,7 @@ int main(){
 				}else{
 					fout.close();
 					//making sure heights are updated
-					root->balanceTree());
+					root->balanceTree();
 					//performing search
 					root->search(userSearch);
 					fout.open("cowley-A01209720.txt", ios::app);

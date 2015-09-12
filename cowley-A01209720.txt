@@ -1,4 +1,19 @@
 Create Tree: 27  7  6  2  26  24  63  45  46  86  
 Check balance: 0
+Node inserted: 27  7  6  2  24  22  26  63  45  46  86  
+Check balance: 0
+Node inserted: 27  7  6  2  24  22  26  63  45  46  86  70  
+Check balance: 0
+Node inserted: 27  7  6  2  24  22  26  63  45  46  86  70  90  
+Check balance: 0
+Node inserted: 27  7  6  2  24  22  26  63  45  46  86  70  90  91  
+Check balance: -1
+Node deleted: 45  7  6  2  24  22  26  63  46  86  70  90  91  
+Check balance: 0
+Check balance: 0
+Search: 45 is at height 4 in the tree.
+Node deleted: 45  7  2  24  22  26  86  63  46  70  90  91  
+Check balance: 0
+Node cannot be found. Deletion cannot be performed
 
 
